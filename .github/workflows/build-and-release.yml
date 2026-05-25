@@ -1,0 +1,172 @@
+name: Build & Deploy Mirsal
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build Cross-Platform
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            platform: windows/amd64
+            artifact-path: build/bin/mirsal.exe
+            release-name: mirsal-windows-amd64.exe
+
+          - os: macos-latest
+            platform: darwin/universal
+            artifact-path: build/bin/mirsal.app
+            release-name: mirsal-macos-universal.zip
+
+          - os: ubuntu-latest
+            platform: linux/amd64
+            artifact-path: build/bin/mirsal
+            release-name: mirsal-linux-amd64
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache: true
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 11.2.2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 26.0.0
+          cache: 'pnpm'
+          cache-dependency-path: frontend/pnpm-lock.yaml
+
+      - name: Install Linux Dependencies
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev build-essential pkg-config
+
+      - name: Install Wails CLI
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.12.0
+
+      - name: Build Application
+        run: wails build -platform ${{ matrix.platform }} -clean
+
+      - name: Package macOS App Bundle
+        if: matrix.os == 'macos-latest'
+        run: |
+          cd build/bin
+          zip -r ../../mirsal-macos-universal.zip mirsal.app
+
+      - name: Prepare Windows and Linux Release Artifacts
+        if: matrix.os != 'macos-latest'
+        run: |
+          cp ${{ matrix.artifact-path }} ./${{ matrix.release-name }}
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.os }}-build
+          path: |
+            mirsal-macos-universal.zip
+            mirsal-windows-amd64.exe
+            mirsal-linux-amd64
+          if-no-files-found: ignore
+
+  release:
+    name: Draft GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Download Windows Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-latest-build
+          path: release-assets/
+
+      - name: Download macOS Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: macos-latest-build
+          path: release-assets/
+
+      - name: Download Linux Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ubuntu-latest-build
+          path: release-assets/
+
+      - name: Generate Release Tag Name
+        id: tag_name
+        run: |
+          if [[ "${{ github.ref }}" == refs/tags/* ]]; then
+            echo "tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+            echo "prerelease=false" >> $GITHUB_OUTPUT
+          else
+            echo "tag=latest" >> $GITHUB_OUTPUT
+            echo "prerelease=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create or Update GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag_name.outputs.tag }}
+          name: Mirsal Release ${{ steps.tag_name.outputs.tag }}
+          draft: false
+          prerelease: ${{ steps.tag_name.outputs.prerelease }}
+          files: |
+            release-assets/mirsal-windows-amd64.exe
+            release-assets/mirsal-macos-universal.zip
+            release-assets/mirsal-linux-amd64
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy-pages:
+    name: Deploy Landing Page
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Inject Repository Variables into HTML
+        run: |
+          # Replace placeholder repo links in index.html to match the active repository
+          sed -i "s|GITHUB_REPOSITORY_URL|https://github.com/${{ github.repository }}|g" docs/index.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages-action@v5
+
+      - name: Upload static website artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'docs/'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "mirsal",
+  "outputfilename": "mirsal",
+  "frontend:install": "pnpm install",
+  "frontend:build": "pnpm run build",
+  "frontend:dev:watcher": "pnpm run dev",
+  "frontend:dev:serverUrl": "auto",
+  "author": {
+    "name": "Mohamed Waheeb AL NOSSIRAT",
+    "email": "mohamed.w.nossirat@gmail.com"
+  },
+  "info": {
+    "productName": "Mirsal",
+    "productVersion": "1.0.0",
+    "companyName": "Wormhole Secure",
+    "fileDescription": "Zero-Knowledge Secure File Transfer Desktop Application"
+  },
+  "width": 960,
+  "height": 680,
+  "minWidth": 800,
+  "minHeight": 600,
+  "maxWidth": 1200,
+  "maxHeight": 900,
+  "disableResize": false,
+  "fullscreen": false,
+  "frameless": false,
+  "startHidden": false,
+  "alwaysOnTop": false,
+  "backgroundMeltdown": false,
+  "title": "Mirsal - Secure File Transfer"
+}
