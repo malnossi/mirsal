@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mirsal - Secure Zero-Knowledge P2P File Sharing</title>
-  
+
   <!-- Modern Typography from Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+
   <style>
     /* Premium space neon color system variables */
     :root {
@@ -31,7 +34,8 @@
       padding: 0;
     }
 
-    html, body {
+    html,
+    body {
       width: 100%;
       min-height: 100vh;
       font-family: 'Inter', -apple-system, sans-serif;
@@ -41,7 +45,10 @@
       scroll-behavior: smooth;
     }
 
-    h1, h2, h3, .brand-title {
+    h1,
+    h2,
+    h3,
+    .brand-title {
       font-family: 'Outfit', sans-serif;
     }
 
@@ -132,7 +139,6 @@
       margin: 40px auto 80px;
       padding: 0 24px;
       display: grid;
-      grid-template-cols: 1.1fr 0.9fr;
       gap: 60px;
       align-items: center;
     }
@@ -143,6 +149,7 @@
         text-align: center;
         gap: 50px;
       }
+
       .downloads-grid {
         justify-content: center;
       }
@@ -195,8 +202,13 @@
     }
 
     @keyframes float-glow {
-      0% { transform: scale(1) translate(0, 0); }
-      100% { transform: scale(1.1) translate(10px, -10px); }
+      0% {
+        transform: scale(1) translate(0, 0);
+      }
+
+      100% {
+        transform: scale(1.1) translate(10px, -10px);
+      }
     }
 
     /* Premium glass border desktop frame */
@@ -207,13 +219,13 @@
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
       padding: 6px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 50px rgba(138,43,226,0.1);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 50px rgba(138, 43, 226, 0.1);
       transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     .desktop-frame:hover {
       transform: translateY(-8px) scale(1.01);
-      box-shadow: 0 40px 80px rgba(0,0,0,0.7), 0 0 60px rgba(0, 255, 255, 0.15);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(0, 255, 255, 0.15);
     }
 
     .screenshot-img {
@@ -230,6 +242,7 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+      align-items: center;
     }
 
     .downloads-label {
@@ -266,6 +279,7 @@
       background: linear-gradient(135deg, rgba(0, 164, 239, 0.1) 0%, rgba(0, 164, 239, 0.2) 100%);
       border-color: rgba(0, 164, 239, 0.3);
     }
+
     .btn-windows:hover {
       border-color: #00a4ef;
       box-shadow: 0 8px 24px rgba(0, 164, 239, 0.3);
@@ -277,6 +291,7 @@
       background: linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(138, 43, 226, 0.2) 100%);
       border-color: rgba(138, 43, 226, 0.3);
     }
+
     .btn-mac:hover {
       border-color: var(--purple-neon);
       box-shadow: 0 8px 24px rgba(138, 43, 226, 0.3);
@@ -288,9 +303,22 @@
       background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 255, 136, 0.15) 100%);
       border-color: rgba(0, 255, 136, 0.2);
     }
+
     .btn-linux:hover {
       border-color: var(--emerald-green);
       box-shadow: 0 8px 24px rgba(0, 255, 136, 0.25);
+      transform: translateY(-3px);
+    }
+
+    .btn-android {
+      background: linear-gradient(135deg, rgba(61, 220, 132, 0.05) 0%, rgba(61, 220, 132, 0.15) 100%);
+      border-color: rgba(61, 220, 132, 0.2);
+    }
+
+    .btn-android:hover {
+      border-color: #3DDC84;
+      /* Official Android Green */
+      box-shadow: 0 8px 24px rgba(61, 220, 132, 0.25);
       transform: translateY(-3px);
     }
 
@@ -414,6 +442,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Header Section -->
@@ -422,16 +451,19 @@
       <div class="brand-logo">
         <svg style="width:20px;height:20px;fill:#FFF" viewBox="0 0 24 24">
           <!-- Shield Lock Icon -->
-          <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,5A3,3 0 0,1 15,8V10A2,2 0 0,1 17,12V17A2,2 0 0,1 15,19H9A2,2 0 0,1 7,17V12A2,2 0 0,1 9,10V8A3,3 0 0,1 12,5M12,7A1,1 0 0,0 11,8V10H13V8A1,1 0 0,0 12,7Z" />
+          <path
+            d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,5A3,3 0 0,1 15,8V10A2,2 0 0,1 17,12V17A2,2 0 0,1 15,19H9A2,2 0 0,1 7,17V12A2,2 0 0,1 9,10V8A3,3 0 0,1 12,5M12,7A1,1 0 0,0 11,8V10H13V8A1,1 0 0,0 12,7Z" />
         </svg>
       </div>
       <span class="brand-title">Mirsal</span>
     </a>
     <nav class="nav-links">
       <a href="#features" class="nav-link">Features</a>
+      <a href="#download" class="nav-link">Download</a>
       <a href="https://github.com/malnossi/mirsal" target="_blank" class="btn-github">
         <svg style="width:16px;height:16px;fill:currentColor" viewBox="0 0 24 24">
-          <path d="M12,2A10,10 0 0,0 2,12C2,16.55 4.97,20.4 9,21.35C9.5,21.45 9.68,21.13 9.68,20.87C9.68,20.64 9.67,20.03 9.67,19.35C6.89,19.96 6.3,18.03 6.3,18.03C5.84,16.88 5.18,16.57 5.18,16.57C4.27,15.95 5.25,15.96 5.25,15.96C6.26,16.03 6.79,17 6.79,17C7.68,18.5 9.1,18.07 9.66,17.82C9.75,17.17 10,16.73 10.29,16.48C8.07,16.23 5.73,15.37 5.73,11.53C5.73,10.44 6.12,9.55 6.76,8.85C6.66,8.6 6.31,7.58 6.86,6.2C6.86,6.2 7.7,5.93 9.6,7.22C10.4,7 11.25,6.9 12,6.9C12.75,6.9 13.6,7 14.4,7.22C16.3,5.93 17.14,6.2 17.14,6.2C17.69,7.58 17.34,8.6 17.24,8.85C17.88,9.55 18.27,10.44 18.27,11.53C18.27,15.38 15.93,16.22 13.7,16.47C14.06,16.78 14.38,17.4 14.38,18.35C14.38,19.71 14.37,20.81 14.37,21.14C14.37,21.4 14.55,21.72 15.07,21.62C19.1,20.39 22,16.55 22,12A10,10 0 0,0 12,2Z" />
+          <path
+            d="M12,2A10,10 0 0,0 2,12C2,16.55 4.97,20.4 9,21.35C9.5,21.45 9.68,21.13 9.68,20.87C9.68,20.64 9.67,20.03 9.67,19.35C6.89,19.96 6.3,18.03 6.3,18.03C5.84,16.88 5.18,16.57 5.18,16.57C4.27,15.95 5.25,15.96 5.25,15.96C6.26,16.03 6.79,17 6.79,17C7.68,18.5 9.1,18.07 9.66,17.82C9.75,17.17 10,16.73 10.29,16.48C8.07,16.23 5.73,15.37 5.73,11.53C5.73,10.44 6.12,9.55 6.76,8.85C6.66,8.6 6.31,7.58 6.86,6.2C6.86,6.2 7.7,5.93 9.6,7.22C10.4,7 11.25,6.9 12,6.9C12.75,6.9 13.6,7 14.4,7.22C16.3,5.93 17.14,6.2 17.14,6.2C17.69,7.58 17.34,8.6 17.24,8.85C17.88,9.55 18.27,10.44 18.27,11.53C18.27,15.38 15.93,16.22 13.7,16.47C14.06,16.78 14.38,17.4 14.38,18.35C14.38,19.71 14.37,20.81 14.37,21.14C14.37,21.4 14.55,21.72 15.07,21.62C19.1,20.39 22,16.55 22,12A10,10 0 0,0 12,2Z" />
         </svg>
         GitHub
       </a>
@@ -441,22 +473,31 @@
   <!-- Hero / Introduction Section -->
   <main class="hero-container">
     <div class="hero-text">
-      <h2>P2P File Transfer<br>Made Beautiful.</h2>
+      <h2>P2P File Transfer Made Beautiful.</h2>
       <p>
-        Mirsal is a zero-knowledge secure cross-platform desktop application designed to stream files and directories between devices in real-time. Powered by Go, Wails v2, and the magic of peer-to-peer security.
+        Mirsal is a zero-knowledge secure cross-platform desktop application designed to stream files and directories
+        between devices in real-time. Powered by Go, Wails v2, and the magic of peer-to-peer security.
       </p>
-      
+
+      <div class="mockup-wrapper">
+      <div class="ambient-glow"></div>
+      <div class="desktop-frame">
+        <img src="mirsal_screenshot.png" alt="Mirsal Application User Interface" class="screenshot-img">
+      </div>
+    </div>
+    <br/>
       <!-- Platforms Downloads -->
-      <div class="downloads-container">
-        <h3 class="downloads-label">Download the Application</h3>
+      <section class="downloads-container" id="download">
+        <h3 class="section-title">Download the Application</h3>
         <div class="downloads-grid">
-          
+
           <!-- Windows Download -->
-          <a href="https://github.com/malnossi/mirsal/releases/download/latest/mirsal-windows-amd64.exe" class="btn-download btn-windows">
+          <a href="https://github.com/malnossi/mirsal/releases/download/latest/mirsal-windows-amd64.exe"
+            class="btn-download btn-windows">
             <svg viewBox="0 0 24 24">
               <path d="M3,12V6.75L9,5.43V12H3M21,12V3L10,5.14V12H21M3,13H9V19.57L3,18.25V13M21,13H10V19.86L21,22V13Z" />
             </svg>
-            
+
             <div>
               <span style="display:block">Windows</span>
               <span class="btn-sub">Intel/AMD .exe</span>
@@ -464,9 +505,11 @@
           </a>
 
           <!-- macOS Download -->
-          <a href="https://github.com/malnossi/mirsal/releases/download/latest/mirsal-macos-universal.zip" class="btn-download btn-mac">
+          <a href="https://github.com/malnossi/mirsal/releases/download/latest/mirsal-macos-universal.zip"
+            class="btn-download btn-mac">
             <svg viewBox="0 0 24 24">
-              <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.1,16.67C20.08,16.74 19.67,18.11 18.71,19.5M15.97,4.17C16.63,3.37 17.07,2.28 16.95,1C16,1.04 14.9,1.6 14.24,2.38C13.68,3.04 13.19,4.14 13.34,5.39C14.39,5.47 15.4,4.88 15.97,4.17Z" />
+              <path
+                d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.1,16.67C20.08,16.74 19.67,18.11 18.71,19.5M15.97,4.17C16.63,3.37 17.07,2.28 16.95,1C16,1.04 14.9,1.6 14.24,2.38C13.68,3.04 13.19,4.14 13.34,5.39C14.39,5.47 15.4,4.88 15.97,4.17Z" />
             </svg>
             <div>
               <span style="display:block">macOS</span>
@@ -475,9 +518,11 @@
           </a>
 
           <!-- Linux Download -->
-          <a href="https://github.com/malnossi/mirsal/releases/download/latest/mirsal-linux-amd64" class="btn-download btn-linux">
+          <a href="https://github.com/malnossi/mirsal/releases/download/latest/mirsal-linux-amd64"
+            class="btn-download btn-linux">
             <svg viewBox="0 0 24 24">
-              <path d="M12,2A10,10 0 0,0 2,12C2,16.58 5.03,20.46 9.14,21.68C9.57,20.83 10.3,20.05 11.23,19.68C11.53,19.55 11.75,19.34 11.9,19.11C11.95,19.11 12.05,19.11 12.1,19.11C12.25,19.34 12.47,19.55 12.77,19.68C13.7,20.05 14.43,20.83 14.86,21.68C18.97,20.46 22,16.58 22,12A10,10 0 0,0 12,2M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4M12,18C8.69,18 6,15.31 6,12C6,8.69 8.69,6 12,6C15.31,6 18,8.69 18,12C18,15.31 15.31,18 12,18Z" />
+              <path
+                d="M12,2A10,10 0 0,0 2,12C2,16.58 5.03,20.46 9.14,21.68C9.57,20.83 10.3,20.05 11.23,19.68C11.53,19.55 11.75,19.34 11.9,19.11C11.95,19.11 12.05,19.11 12.1,19.11C12.25,19.34 12.47,19.55 12.77,19.68C13.7,20.05 14.43,20.83 14.86,21.68C18.97,20.46 22,16.58 22,12A10,10 0 0,0 12,2M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4M12,18C8.69,18 6,15.31 6,12C6,8.69 8.69,6 12,6C15.31,6 18,8.69 18,12C18,15.31 15.31,18 12,18Z" />
             </svg>
             <div>
               <span style="display:block">Linux</span>
@@ -485,55 +530,67 @@
             </div>
           </a>
 
+          <a href="https://play.google.com/store/apps/details?id=io.sanford.wormhole_william" target="_blank"
+            class="btn-download btn-android">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+              <path
+                d="M452.5 317.9C465.8 317.9 476.5 328.6 476.5 341.9C476.5 355.2 465.8 365.9 452.5 365.9C439.2 365.9 428.5 355.2 428.5 341.9C428.5 328.6 439.2 317.9 452.5 317.9zM187.4 317.9C200.7 317.9 211.4 328.6 211.4 341.9C211.4 355.2 200.7 365.9 187.4 365.9C174.1 365.9 163.4 355.2 163.4 341.9C163.4 328.6 174.1 317.9 187.4 317.9zM461.1 221.4L509 138.4C509.8 137.3 510.3 136 510.5 134.6C510.7 133.2 510.7 131.9 510.4 130.5C510.1 129.1 509.5 127.9 508.7 126.8C507.9 125.7 506.9 124.8 505.7 124.1C504.5 123.4 503.2 123 501.8 122.8C500.4 122.6 499.1 122.8 497.8 123.2C496.5 123.6 495.3 124.3 494.2 125.1C493.1 125.9 492.3 127.1 491.7 128.3L443.2 212.4C404.4 195 362.4 186 319.9 186C277.4 186 235.4 195 196.6 212.4L148.2 128.4C147.6 127.2 146.7 126.1 145.7 125.2C144.7 124.3 143.4 123.7 142.1 123.3C140.8 122.9 139.4 122.8 138.1 122.9C136.8 123 135.4 123.5 134.2 124.2C133 124.9 132 125.8 131.2 126.9C130.4 128 129.8 129.3 129.5 130.6C129.2 131.9 129.2 133.3 129.4 134.7C129.6 136.1 130.2 137.3 130.9 138.5L178.8 221.5C96.5 266.2 40.2 349.5 32 448L608 448C599.8 349.5 543.5 266.2 461.1 221.4z" />
+            </svg>
+            <div>
+              <span style="display:block">Android</span>
+              <span class="btn-sub">Google Play</span>
+            </div>
+          </a>
+
         </div>
-      </div>
+      </section>
     </div>
 
     <!-- UI Mockup Frame -->
-    <div class="mockup-wrapper">
-      <div class="ambient-glow"></div>
-      <div class="desktop-frame">
-        <img src="mirsal_screenshot.png" alt="Mirsal Application User Interface" class="screenshot-img">
-      </div>
-    </div>
   </main>
 
   <!-- Features Grid -->
   <section class="features-section" id="features">
     <h2 class="section-title">Key Capabilities</h2>
     <div class="features-grid">
-      
+
       <!-- Card 1 -->
       <div class="feature-card">
         <div class="feature-icon">
           <svg style="width:24px;height:24px;fill:currentColor" viewBox="0 0 24 24">
-            <path d="M12,22A10,10 0 1,1 22,12A10,10 0 0,1 12,22M12,4A8,8 0 1,0 20,12A8,8 0 0,0 12,4M11,16.5V11H8V9H13V16.5H16V18.5H9V16.5H11" />
+            <path
+              d="M12,22A10,10 0 1,1 22,12A10,10 0 0,1 12,22M12,4A8,8 0 1,0 20,12A8,8 0 0,0 12,4M11,16.5V11H8V9H13V16.5H16V18.5H9V16.5H11" />
           </svg>
         </div>
         <h3>Zero-Knowledge</h3>
-        <p>Uses PAKE (Password Authenticated Key Exchange) encryption keys to negotiate peer connections. Files stream directly—no servers log or store content.</p>
+        <p>Uses PAKE (Password Authenticated Key Exchange) encryption keys to negotiate peer connections. Files stream
+          directly—no servers log or store content.</p>
       </div>
 
       <!-- Card 2 -->
       <div class="feature-card">
         <div class="feature-icon">
           <svg style="width:24px;height:24px;fill:currentColor" viewBox="0 0 24 24">
-            <path d="M19.35,10.04C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.04C2.34,8.36 0,10.91 0,14C0,17.31 2.69,20 6,20H19C21.76,20 24,17.76 24,15C24,12.36 21.95,10.22 19.35,10.04M19,18H6C3.79,18 2,16.21 2,14C2,11.95 3.53,10.24 5.56,10.03L6.63,9.92L7.13,8.97C8.08,7.14 9.94,6 12,6C14.62,6 16.88,7.86 17.39,10.43L17.69,11.93L19.22,12.04C20.78,12.14 22,13.45 22,15C22,16.65 20.65,18 19,18M8,13H11V17H13V13H16L12,9L8,13Z" />
+            <path
+              d="M19.35,10.04C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.04C2.34,8.36 0,10.91 0,14C0,17.31 2.69,20 6,20H19C21.76,20 24,17.76 24,15C24,12.36 21.95,10.22 19.35,10.04M19,18H6C3.79,18 2,16.21 2,14C2,11.95 3.53,10.24 5.56,10.03L6.63,9.92L7.13,8.97C8.08,7.14 9.94,6 12,6C14.62,6 16.88,7.86 17.39,10.43L17.69,11.93L19.22,12.04C20.78,12.14 22,13.45 22,15C22,16.65 20.65,18 19,18M8,13H11V17H13V13H16L12,9L8,13Z" />
           </svg>
         </div>
         <h3>Auto-Folder Compression</h3>
-        <p>Drop a directory and Mirsal automatically packs it into a temporary archive on-the-fly. The receiver seamlessly extracts the folder and cleans up temporary items.</p>
+        <p>Drop a directory and Mirsal automatically packs it into a temporary archive on-the-fly. The receiver
+          seamlessly extracts the folder and cleans up temporary items.</p>
       </div>
 
       <!-- Card 3 -->
       <div class="feature-card">
         <div class="feature-icon">
           <svg style="width:24px;height:24px;fill:currentColor" viewBox="0 0 24 24">
-            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12C20,14.09 19.21,15.97 17.93,17.41L16.5,16C17.43,14.93 18,13.53 18,12A6,6 0 0,0 12,6V8L9,5L12,2V4M12,20V18A6,6 0 0,0 18,12H16L19,15L22,12H20A8,8 0 0,1 12,20M7.5,14L10.5,11L12.5,13L16.5,9L15,7.5L12.5,10L10.5,8L6,12.5L7.5,14Z" />
+            <path
+              d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12C20,14.09 19.21,15.97 17.93,17.41L16.5,16C17.43,14.93 18,13.53 18,12A6,6 0 0,0 12,6V8L9,5L12,2V4M12,20V18A6,6 0 0,0 18,12H16L19,15L22,12H20A8,8 0 0,1 12,20M7.5,14L10.5,11L12.5,13L16.5,9L15,7.5L12.5,10L10.5,8L6,12.5L7.5,14Z" />
           </svg>
         </div>
         <h3>Event Bridge Calculations</h3>
-        <p>Monitors speed in real-time, displaying elapsed percentages and estimating seconds remaining via high-feedback circular and linear progress displays.</p>
+        <p>Monitors speed in real-time, displaying elapsed percentages and estimating seconds remaining via
+          high-feedback circular and linear progress displays.</p>
       </div>
 
     </div>
@@ -552,4 +609,5 @@
   </footer>
 
 </body>
+
 </html>
